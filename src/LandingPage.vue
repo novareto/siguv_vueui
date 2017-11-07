@@ -2,35 +2,31 @@
   <v-app id="inspire">
     <main>
       <v-content>
-	<h1> Herzlich Willkommen im Extranet </h1>
+	<h3> Herzlich Willkommen im Extranet </h3>
 	<p class="lead">
 	  Hier haben Sie die Möglichkeit unterschiedliche Dinge zu sehen
 	</p>
-	<div class="card">
-	  <header class="card-header">
-            <p class="card-header-title">
-              Adressbuch
-            </p>
-	  </header>
-	  <div class="card-content">
-            <div class="content">
-              <p> Hier können sie Ihr Adressbuch verwalten</p>
-              <small>11:09 PM - 1 Jan 2016</small>
-            </div>
-	  </div>
-	  <footer class="card-footer">
-            <router-link to="addBuddy"
-			 class="card-footer-item">Hinzufügen</router-link>
-            <router-link to="dokumente/Adressbook"
-			 class="card-footer-item">Dokumente</router-link>
-	  </footer>
-	</div>
+
+<v-layout>
+  <v-flex xs12 sm6 offset1>
+<v-card>
+        <v-card-media src="/static/doc-images/cards/desert.jpg" height="200px">
+        </v-card-media>
+        <v-card-title primary-title>
+          <div>
+            <h3 class="headline mb-0">Adressbuch</h3>
+            <div>Verwalten Sie hier Ihre Adressen und Bekannten</div>
+          </div>
+        </v-card-title>
+        <v-card-actions>
+          <v-btn route to="addBuddy" flat color="orange"> <v-icon>add</v-icon>  Hinzufügen</v-btn>
+          <v-btn route to="dokumente/Adressbook" flat color="orange"> <v-icon>list</v-icon> Einträge</v-btn>
+        </v-card-actions>
+      </v-card>
+  </v-flex>
+</v-layout>
 	{{this.$auth.user()}}   
 	{{this.$auth.user().name}}   
-	<ul v-for="pr in this.$auth.user().pr">
-          <card-item document="pr"> </card-item>
-          <li> {{pr.linkname}} </li>
-	</ul>   
       </v-content>
     </main>
   </v-app>

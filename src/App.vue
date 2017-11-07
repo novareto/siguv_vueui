@@ -1,42 +1,46 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      persistent
-      v-model="drawer"
-      enable-resize-watcher
-      app
-       >
-      <v-list dense>
-           <router-link :to="link.route" tag="li"
-			v-for="link in getLinks()" :key="link.route">
-            <v-list-tile>
-              <v-list-tile-avatar>
-                <v-icon medium class="grey--text text--darken-2">
-		  {{ link.icon }}
-		</v-icon>
-              </v-list-tile-avatar>
-              <v-list-tile-content>
-                <v-list-tile-title v-text="link.title" />
-              </v-list-tile-content>
-            </v-list-tile>
-           </router-link>
-           <v-list-tile @click="$auth.logout()" v-if="$auth.check()">
-	      <v-list-tile-avatar>
-                <v-icon medium class="grey--text text--darken-2">
-		  cancel
-		</v-icon>
-              </v-list-tile-avatar>
-              <v-list-tile-content>
-                <v-list-tile-title>Logout</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-      </v-list>
 
-    </v-navigation-drawer>
-    <v-toolbar color="indigo" dark fixed app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>UVCSite</v-toolbar-title>
-    </v-toolbar>
+  <v-navigation-drawer temporary v-model="sideNav">
+    <v-list>
+      <v-list-tile>
+        <v-list-action v-for="item in user_links" :key="item.link">
+          <v-icon>{{item.icon}}</v-icon>
+          <v-list-tile-content>
+            <v-list-tile-title v-html="item.title"></v-list-tile-title>
+            </v-list-tile-content>
+        </v-list-action>
+      </v-list-tile>
+    </v-list>
+  </v-navigation-drawer>
+  <v-toolbar dark class="indigo">
+    <v-toolbar-side-icon @click.native.stop="sideNav = ! sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
+    <v-toolbar-title>Extranet</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
+    <v-toolbar-items class="hidden-xs-only" v-for="item in user_links" :key="item.link">
+      
+      <v-btn router flat :to="item.route"> <v-icon>{{item.icon}}</v-icon>  {{item.title}}</v-btn>
+    </v-toolbar-items>
+
+    <!--
+    <v-toolbar-items>
+    <v-menu offset-y>
+      <v-btn flat class="indigo" slot="activator">
+        <span>Meine Einstellungen</span>
+        <v-icon dark>arrow_drop_down</v-icon>
+        </v-btn>
+      <v-list>
+        <v-list-tile v-for="item in items" :key="item.title" @click="">
+          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
+    </v-toolbar-items>
+    -->
+  </v-toolbar>
+
+
     <main>
       <v-content>
         <v-container>
@@ -53,7 +57,7 @@
 <script>
     export default {
 	data: () => ({
-	    drawer: true,
+	    sideNav: false,
 	    user_links: [
 		{
 		    title: 'Home',

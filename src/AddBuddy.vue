@@ -10,11 +10,21 @@
     <v-text-field
       label="Name"
       v-model="user.name"
-      v-bind:class="{'is-danger': $v.user.name.$error, 'is-success': $v.user.name.$dirty && !$v.user.name.$invalid}"
+      :error-messages="nameErrors"
       @input="$v.user.name.$touch()"
       @blur="$v.user.name.$touch()"
       required
     ></v-text-field>
+
+    <v-text-field
+     label="Alter"
+      :error-messages="alterErrors"
+      @input="$v.user.alter.$touch()"
+      @blur="$v.user.alter.$touch()"
+      required
+     v-model="user.alter">
+
+    </v-text-field>
 
     <v-btn @click="handle_save">submit</v-btn>
   </form>
@@ -36,9 +46,24 @@ export default {
            }
        }
    },
+   computed: {
+       nameErrors() {
+          const errors = []
+          if (!this.$v.user.name.$dirty) return errors
+          !this.$v.user.name.minLength && errors.push('Der Name muss mindestens 4 Zeichen haben')
+          !this.$v.user.name.required && errors.push('Name ist ein Pflichtfeld.')
+          return errors
+       },
+       alterErrors() {
+          const errors = []
+          if (!this.$v.user.alter.$dirty) return errors
+          !this.$v.user.alter.between && errors.push('Bitte geben Sie ein realistisches alter ein')
+          !this.$v.user.name.required && errors.push('Alter ist ein Pflichtfeld.')
+          return errors
+       },
+   },
    methods: {
        handle_save() {
-           alert(this.$auth.user());
            if (this.$v.$error == false) {
                var url = this.$config.SITE_URL + 'members/' + this.$auth.user().pid + '/Adressbook'
                this.$http.put(url, {title: this.user.title, name: this.user.name, alter: this.user.alter}
@@ -59,6 +84,10 @@ export default {
                required,
                minLength: minLength(4)
            },
+           alter: {
+               required,
+               between: between(0, 130)
+           }
        },
    }
 }

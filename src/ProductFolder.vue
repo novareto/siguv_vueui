@@ -1,24 +1,23 @@
 <template>
-    <div class="container">
-        <h2> {{$route.params.object_type}} </h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th> Titel </th>
-                    <th> Author </th>
-                    <th> Status </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="item in items">
-                    <td> {{item.titel}} </td>
-                    <td> {{item.author}} </td>
-                    <td> {{item.status}} </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div>
+  <h2> {{$route.params.object_type}} </h2>
+  <v-data-table
+      v-bind:headers="headers"
+      :items="items"
+      hide-actions
+      class="elevation-1"
+    >
+    <template slot="items" scope="props">
+      <td>{{ props.item.titel }}</td>
+      <td>{{ props.item.datum }}</td>
+      <td>{{ props.item.author }}</td>
+      <td>{{ props.item.status }}</td>
+    </template>
+  </v-data-table>
+  </div>
 </template>
+
+
 <script>
 
 export default {
@@ -26,7 +25,33 @@ export default {
 
   data () {
     return {
-          items: []
+        items: [],
+        headers: [
+          {
+            text: 'Titel',
+            align: 'left',
+            sortable: true,
+            value: 'name'
+          },
+          {
+            text: 'Datum',
+            align: 'left',
+            sortable: true,
+            value: 'name'
+          },
+          {
+            text: 'Status',
+            align: 'left',
+            sortable: true,
+            value: 'name'
+          },
+          {
+            text: 'Author',
+            align: 'left',
+            sortable: true,
+            value: 'name'
+          },
+        ]
     }
   },
   created() {
