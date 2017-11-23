@@ -69,7 +69,7 @@ export default {
                this.$http.put(url, {title: this.user.title, name: this.user.name, alter: this.user.alter}
                    ).then(response => {
                        this.items = response.data.items
-                       this.$router.push('/')
+                       this.$router.push({name: 'home'})
                    }).catch(e => {
                        console.log("ERRROR")
                        console.log(e)

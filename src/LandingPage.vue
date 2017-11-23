@@ -8,9 +8,9 @@
 	</p>
 
 <v-layout>
-  <v-flex xs12 sm6 offset1>
+  <v-flex xs12 sm5 offset1>
 <v-card>
-        <v-card-media src="/static/doc-images/cards/desert.jpg" height="200px">
+        <v-card-media src="https://www.vera-donna.eu/wp-content/uploads/2016/06/Adressbuch-Scrittura-klein-mit-bestem-Einschreibpapier-940x840.png" height="200px">
         </v-card-media>
         <v-card-title primary-title>
           <div>

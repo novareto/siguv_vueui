@@ -10,7 +10,7 @@ const routes = new VueRouter({
     history: false,
     root: '/',
     routes: [
-        { path: '/', component: LandingPage, meta: {auth: true} },
+        { path: '/', name:'home', component: LandingPage, meta: {auth: true} },
         { path: '/login', component: Login, meta: {auth: false}},
         { path: '/addBuddy', component: AddBuddy },
         { path: '/dokumente/:object_type', component: ProductFolder },

@@ -7,11 +7,11 @@
       hide-actions
       class="elevation-1"
     >
-    <template slot="items" scope="props">
+    <template slot="items" slot-scope="props">
       <td>{{ props.item.titel }}</td>
       <td>{{ props.item.datum }}</td>
-      <td>{{ props.item.author }}</td>
       <td>{{ props.item.status }}</td>
+      <td>{{ props.item.author }}</td>
     </template>
   </v-data-table>
   </div>
@@ -31,25 +31,25 @@ export default {
             text: 'Titel',
             align: 'left',
             sortable: true,
-            value: 'name'
+            value: 'titel'
           },
           {
             text: 'Datum',
             align: 'left',
             sortable: true,
-            value: 'name'
+            value: 'datum'
           },
           {
             text: 'Status',
             align: 'left',
             sortable: true,
-            value: 'name'
+            value: 'status'
           },
           {
             text: 'Author',
             align: 'left',
             sortable: true,
-            value: 'name'
+            value: 'author'
           },
         ]
     }

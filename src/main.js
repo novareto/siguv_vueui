@@ -14,8 +14,8 @@ import {routes} from './Router'
 
 
 const configs = {
-    API_URL: 'http://karl.novareto.de:8080/app/++services++json/',
-    SITE_URL: 'http://karl.novareto.de:8080/app/',
+    API_URL: 'http://localhost:8080/app/++services++json/',
+    SITE_URL: 'http://localhost:8080/app/',
 }
 
 
@@ -37,7 +37,7 @@ Vue.use(VueAuth,
     router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
     loginData: {url: '/auth', method: 'POST', redirect: '/', fetchUser: true},
     fetchData: {url: '/user', method: 'GET', enabled: true},
-    refreshData: {enabled: false},
+    refreshData: {url: 'refresh', method: 'POST', enabled: true},
     rolesVar: 'roles',
   }
 )
