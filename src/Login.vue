@@ -17,32 +17,31 @@
     <v-btn @click="login()">Login</v-btn>
 
  </form>
-
 </template>
 
 <script>
 export default {
-    name: 'Login',
-    data: function () {
-        return {
-            credentials: {login: '', password: ''}
-            }
-    },
-    methods: {
-       login: function () {
-           var redirect = this.$auth.redirect();
-           this.$auth.login({
-               data: this.credentials,
-               rememberMe: true,
-               success() {
-                   console.log('success ' + this.context);
-               },
-               error(res) {
-                   console.log('error ' + this.context);
-                   this.error = res.data;
-               }
-           })
-       },
+  name: "Login",
+  data: function() {
+    return {
+      credentials: { login: "", password: "" }
+    };
+  },
+  methods: {
+    login: function() {
+      var redirect = this.$auth.redirect();
+      this.$auth.login({
+        data: this.credentials,
+        rememberMe: true,
+        success() {
+          console.log("success " + this.context);
+        },
+        error(res) {
+          console.log("error " + this.context);
+          this.error = res.data;
+        }
+      });
     }
-}
+  }
+};
 </script>

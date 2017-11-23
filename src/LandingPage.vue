@@ -33,14 +33,14 @@
 </template>
 
 <script>
-import CardItem from './components/CardItem.vue'
+import CardItem from "./components/CardItem.vue";
 export default {
-    name: 'LandingPage',
-    data: function() {
-	return {
-            products: []
-	}
-    },
-    components: {CardItem}
-}
+  name: "LandingPage",
+  data: function() {
+    return {
+      products: []
+    };
+  },
+  components: { CardItem }
+};
 </script>

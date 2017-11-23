@@ -19,53 +19,56 @@
 
 
 <script>
-
 export default {
-  name: 'ProductFolder',
+  name: "ProductFolder",
 
-  data () {
+  data() {
     return {
-        items: [],
-        headers: [
-          {
-            text: 'Titel',
-            align: 'left',
-            sortable: true,
-            value: 'titel'
-          },
-          {
-            text: 'Datum',
-            align: 'left',
-            sortable: true,
-            value: 'datum'
-          },
-          {
-            text: 'Status',
-            align: 'left',
-            sortable: true,
-            value: 'status'
-          },
-          {
-            text: 'Author',
-            align: 'left',
-            sortable: true,
-            value: 'author'
-          },
-        ]
-    }
+      items: [],
+      headers: [
+        {
+          text: "Titel",
+          align: "left",
+          sortable: true,
+          value: "titel"
+        },
+        {
+          text: "Datum",
+          align: "left",
+          sortable: true,
+          value: "datum"
+        },
+        {
+          text: "Status",
+          align: "left",
+          sortable: true,
+          value: "status"
+        },
+        {
+          text: "Author",
+          align: "left",
+          sortable: true,
+          value: "author"
+        }
+      ]
+    };
   },
   created() {
-      var url = this.$config.SITE_URL + '/members/' + this.$auth.user().pid + '/' + this.$route.params.object_type
-      this.$http.get(url)
-          .then(response => {
-              console.log(response.data)
-              this.items = response.data.items
-          })
-          .catch(e => {
-              console.log(e)
-          })
-
+    var url =
+      this.$config.SITE_URL +
+      "/members/" +
+      this.$auth.user().pid +
+      "/" +
+      this.$route.params.object_type;
+    this.$http
+      .get(url)
+      .then(response => {
+        console.log(response.data);
+        this.items = response.data.items;
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
-
-}
+};
 </script>

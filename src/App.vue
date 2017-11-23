@@ -1,23 +1,28 @@
 <template>
   <v-app id="inspire">
-
-  <v-navigation-drawer temporary absolute v-model="sideNav">
+  <v-navigation-drawer app fixed v-model="drawer">
     <v-list>
       <v-list-tile>
-        <v-list-action v-for="item in user_links" :key="item.link" :name="item.title">
+        <v-list-tile-content>
+          UVCSite
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-divider></v-divider>
+      <v-list-tile v-for="item in user_links" :key="item.link" :name="item.title">
+        <v-list-tile-action >
           <v-icon>{{item.icon}}</v-icon>
-          <v-list-tile-content>
-            <v-list-tile-title v-html="item.title"></v-list-tile-title>
-            </v-list-tile-content>
-        </v-list-action>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title v-html="item.title"></v-list-tile-title>
+        </v-list-tile-content>
       </v-list-tile>
     </v-list>
   </v-navigation-drawer>
-  <v-toolbar dark class="blue darken-4">
-    <v-toolbar-side-icon @click.native.stop="sideNav = ! sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
+  <v-container>
+  <v-toolbar dark fixed app class="blue darken-4">
+    <v-toolbar-side-icon @click.native.stop="drawer = ! drawer" class="hidden-sm-and-up"></v-toolbar-side-icon>
     <v-toolbar-title>Extranet</v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
     <v-toolbar-items class="hidden-xs-only" v-for="item in user_links" :key="item.link">
       
       <v-btn router flat :to="item.route"> <v-icon>{{item.icon}}</v-icon>  {{item.title}}</v-btn>
@@ -41,57 +46,56 @@
   </v-toolbar>
 
 
-    <main>
       <v-content>
-        <v-container>
+        <v-container fluid fill-height>
           <router-view></router-view>
         </v-container>
       </v-content>
-    </main>
     <v-footer color="indigo" app>
       <span class="white--text">&copy; 2017</span>
     </v-footer>
+  </v-container>
   </v-app>
 </template>
 
 <script>
-    export default {
-	data: () => ({
-	    sideNav: false,
-	    user_links: [
-		{
-		    title: 'Home',
-		    icon: 'bookmark_border',
-		    route: '/',
-		},
-		{
-		    title: 'Add buddy',
-		    icon: 'add',
-		    route: '/addBuddy',
-                },
-	    ],
-	    anon_links: [
-		{
-		    title: 'Login',
-		    icon: 'person_outline',
-		    route: '/login',
-		    auth: false,
-		},
-	    ],
-	}),
-	methods: {
-	    getLinks: function () {
-		if (this.$auth.check()) {
-		    return this.user_links
-		} else {
-		    return this.anon_links
-		}
-	    },
-    },
+export default {
+  data: () => ({
+    drawer: null,
+    user_links: [
+      {
+        title: "Home",
+        icon: "bookmark_border",
+        route: "/"
+      },
+      {
+        title: "Add buddy",
+        icon: "add",
+        route: "/addBuddy"
+      }
+    ],
+    anon_links: [
+      {
+        title: "Login",
+        icon: "person_outline",
+        route: "/login",
+        auth: false
+      }
+    ]
+  }),
+  methods: {
+    getLinks: function() {
+      if (this.$auth.check()) {
+        return this.user_links;
+      } else {
+        return this.anon_links;
+      }
     }
+  }
+};
 </script>
 
 <style lang="stylus">
-  @require '../node_modules/vuetify/src/stylus/main.styl'
+@require '../node_modules/vuetify/src/stylus/main.styl';
 </style>
 
