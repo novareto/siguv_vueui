@@ -3,8 +3,11 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+const store = new Vuex.Store({
+    name: 'store',
     state: {
         key: 'value'
     }
 });
+
+export { store }

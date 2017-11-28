@@ -12,7 +12,7 @@
                 <p>90763 Fürth</p>
 
                 <p>0911/7807252</p>
-                <p>info@novareto.de<p>
+                <p>info@novareto.de</p>
                     </div>
                     <div>
                         <table>

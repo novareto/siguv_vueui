@@ -11,7 +11,7 @@ import Vuetify from 'vuetify'
 import AuthBearer from './lib/bearer.js'
 import config from './lib/config'
 import { routes } from './lib/Router'
-import store from './lib/store'
+import { store } from './lib/store'
 import Vuex from 'vuex'
 
 
@@ -47,7 +47,7 @@ Vue.use(VueAuth,
 )
 
 new Vue({
-    store,
+    store: store,
     el: '#app',
     router: routes,
     template: '<App/>',
