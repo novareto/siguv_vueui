@@ -51,7 +51,7 @@
           <router-view></router-view>
       </v-content>
   </v-container>
-    <v-footer color="indigo">
+    <v-footer color="blue darken-4">
       <span class="white--text">&copy; 2017</span>
     </v-footer>
   </v-app>
@@ -66,7 +66,7 @@ export default {
         {
           title: "Meine Daten",
           icon: "account_box",
-          route: "logout"
+          route: "meinedaten"
         }
       ],
       user_links: [
