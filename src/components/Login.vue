@@ -40,19 +40,23 @@ export default {
   },
   methods: {
     login: function() {
-      var redirect = this.$auth.redirect();
-      this.$auth.login({
-        data: this.credentials,
-        rememberMe: true,
-        success() {
-          console.log("success " + this.context);
-	  this.$store.commit('flash_message/add', 'You are Logged in !');
-        },
-        error(res) {
-          console.log("error " + this.context);
-          this.error = res.data;
-        }
-      });
+	var redirect = this.$auth.redirect();
+	this.$auth.login({
+            data: this.credentials,
+            rememberMe: true,
+            success() {
+		this.$store.commit('flash_message/add', 'You are Logged in !');
+            },
+            error(err) {
+		let message = "An error occured. Contact the administrator."
+		if (err.response.status == 403) {
+		    message = (err.response.data.hasOwnProperty('error') ?
+			       err.response.data['error'] : "Login failed.");
+		}
+		console.log(message);
+		this.$store.commit('flash_message/add', message);
+            }
+	});
     }
   }
 };
