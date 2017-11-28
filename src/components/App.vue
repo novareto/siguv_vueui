@@ -44,12 +44,11 @@
     </v-menu>
     </v-toolbar-items>
   </v-toolbar>
-
-
   <v-container fluid fill-height>
-      <v-content>
-          <router-view></router-view>
-      </v-content>
+    <v-content>
+      <Flash />
+      <router-view></router-view>
+    </v-content>
   </v-container>
     <v-footer color="blue darken-4">
       <span class="white--text">&copy; 2017</span>
@@ -58,60 +57,64 @@
 </template>
 
 <script>
+import flash from './flash.vue'
+
 export default {
-  data() {
-    return {
-      hans: false,
-      pers_links: [
-        {
-          title: "Meine Daten",
-          icon: "account_box",
-          route: "meinedaten"
-        }
-      ],
-      user_links: [
-        {
-          title: "Home",
-          icon: "bookmark_border",
-          route: "/"
-        },
-        {
-          title: "Add buddy",
-          icon: "add",
-          route: "/addBuddy"
-        }
-      ],
-      anon_links: [
-        {
-          title: "Login",
-          icon: "person_outline",
-          route: "/login",
-          auth: false
-        }
-      ]
-    };
-  },
-  methods: {
-    getLinks: function() {
-      if (this.$auth.check()) {
-        return this.user_links;
-      } else {
-        return this.anon_links;
-      }
+    data() {
+	return {
+	    hans: false,
+	    pers_links: [
+		{
+		    title: "Meine Daten",
+		    icon: "account_box",
+		    route: "meinedaten"
+		}
+	    ],
+	    user_links: [
+		{
+		    title: "Home",
+		    icon: "bookmark_border",
+		    route: "/"
+		},
+		{
+		    title: "Add buddy",
+		    icon: "add",
+		    route: "/addBuddy"
+		}
+	    ],
+	    anon_links: [
+		{
+		    title: "Login",
+		    icon: "person_outline",
+		    route: "/login",
+		    auth: false
+		}
+	    ]
+	};
     },
-    logout() {
-      this.$auth.logout({
-        makeRequest: true,
-        success() {
-          console.log("success " + this.context);
-          this.$router.push({ name: "login" });
-        },
-        error() {
-          console.log("error " + this.context);
-        }
-      });
+    components : { Flash: flash },
+    methods: {
+	getLinks() {
+	    if (this.$auth.check()) {
+		return this.user_links;
+	    } else {
+		return this.anon_links;
+	    }
+	},
+	logout() {
+	    this.$auth.logout({
+		makeRequest: true,
+		success() {
+		    console.log("success " + this.context);
+		    this.$router.push({ name: "login" });
+		    this.$store.commit('set_message', 'You are logged out !');
+		},
+		error() {
+		    console.log("error " + this.context);
+		}
+	    });
+	}
     }
-  }
 };
 </script>
 

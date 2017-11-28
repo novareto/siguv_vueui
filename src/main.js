@@ -16,8 +16,8 @@ import Vuex from 'vuex'
 
 
 const configs = {
-    API_URL: 'http://localhost:8080/app/++services++json/',
-    SITE_URL: 'http://localhost:8080/app/',
+    API_URL: 'http://karl.novareto.de:8080/app/++services++json/',
+    SITE_URL: 'http://karl.novareto.de:8080/app/',
 }
 
 
