@@ -46,7 +46,6 @@ Vue.use(VueAuth,
     }
 )
 
-var store = {}
 new Vue({
     store,
     el: '#app',

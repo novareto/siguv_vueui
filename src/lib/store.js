@@ -5,6 +5,6 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        key: value
+        key: 'value'
     }
 });

@@ -1,4 +1,11 @@
 <template>
+<v-layout>
+  <v-flex offset-sm2 xs8>
+    <v-card>
+        <v-card-title primary-title>
+          <h3 class="headline mb-0">Login</h3>
+        </v-card-title>
+      <v-card-text>
  <form>
 
     <v-text-field
@@ -17,6 +24,10 @@
     <v-btn @click="login()">Login</v-btn>
 
  </form>
+      </v-card-text>
+    </v-card>
+  </v-flex>
+</v-layout>
 </template>
 
 <script>

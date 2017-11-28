@@ -1,12 +1,17 @@
 <template>
-  <div>
-  <h2> {{$route.params.object_type}} </h2>
-  <v-data-table
-      v-bind:headers="headers"
-      :items="items"
-      hide-actions
-      class="elevation-1"
-    >
+    <v-layout>
+      <v-flex offset-sm2 xs8>
+        <v-card>
+          <v-card-title primary-title>
+           <h3 class="headline mb-0"> {{$route.params.object_type}} </h3>
+          </v-card-title>
+          <v-card-text>
+            <v-data-table
+                v-bind:headers="headers"
+                :items="items"
+                hide-actions
+                class="elevation-1"
+            >
     <template slot="items" slot-scope="props">
       <td>{{ props.item.titel }}</td>
       <td>{{ props.item.datum }}</td>
@@ -14,7 +19,10 @@
       <td>{{ props.item.author }}</td>
     </template>
   </v-data-table>
-  </div>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
 </template>
 
 

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ProductFolder from './components/ProductFolder.vue'
-import LandingPage from './components/LandingPage.vue'
-import AddBuddy from './components/AddBuddy.vue'
-import Login from './components/Login.vue'
+import ProductFolder from '../components/ProductFolder.vue'
+import LandingPage from '../components/LandingPage.vue'
+import AddBuddy from '../components/AddBuddy.vue'
+import Login from '../components/Login.vue'
 
 
 const routes = new VueRouter({
@@ -13,7 +13,7 @@ const routes = new VueRouter({
         { path: '/', name: 'home', component: LandingPage, meta: { auth: true } },
         { path: '/login', name: 'login', component: Login, meta: { auth: false } },
         { path: '/addBuddy', component: AddBuddy, meta: { auth: true } },
-        { path: '/dokumente/:object_type', component: ProductFolder },
+        { path: '/dokumente/:object_type', component: ProductFolder, meta: { auth: true } },
     ]
 })
 

@@ -1,4 +1,11 @@
 <template>
+ <v-layout>
+   <v-flex offset-sm2 xs8>
+     <v-card>
+       <v-card-title> 
+         <h3 class="headline mb-0">Neuen Kontakt hinzüfügen </h3>
+       </v-card-title>
+       <v-card-text>
   <form>
 
     <v-text-field
@@ -26,8 +33,12 @@
 
     </v-text-field>
 
-    <v-btn @click="handle_save">submit</v-btn>
+    <v-btn @click="handle_save">Speichern</v-btn>
   </form>
+       </v-card-text>
+     </v-card>
+   </v-flex>
+ </v-layout>
 </template>
 
 
