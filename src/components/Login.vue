@@ -46,7 +46,7 @@ export default {
         rememberMe: true,
         success() {
           console.log("success " + this.context);
-	  this.$store.commit('set_message', 'You are Logged in !');
+	  this.$store.commit('flash_message/add', 'You are Logged in !');
         },
         error(res) {
           console.log("error " + this.context);

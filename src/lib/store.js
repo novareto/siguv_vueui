@@ -4,17 +4,28 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+    name: 'store',
     state: {
         key: 'value',
-	message: null
     },
-    mutations: {
-	flush_message: state => { state.message = null; },
-	set_message: (state, message) => {
-	    console.log('Setting message ' + message);
-	    state.message = message;
+    modules: {
+	flash_message: {
+	    namespaced: true,
+	    state: {
+		message: null
+	    },
+	    mutations: {
+		flush: state => {
+		    state.message = null;
+		},
+		add: (state, message) => {
+		    state.message = message;
+		}
+
+	    }
 	}
     }
 });
 
 export default store;
+

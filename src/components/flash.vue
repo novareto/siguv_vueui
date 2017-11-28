@@ -30,10 +30,10 @@ export default {
     computed: {
 	message: {
 	    get: function () {
-		return this.$store.state.message;
+		return this.$store.state.flash_message.message;
 	    },
 	    set: function(value) {
-		this.$store.commit('flush_message');
+		this.$store.commit('flash_message/flush');
 	    }
 	}
     }

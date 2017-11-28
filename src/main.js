@@ -33,21 +33,20 @@ Vue.axios.defaults.baseURL = configs.API_URL
 Vue.axios.defaults.headers.common["X-UVCSITE-REST"] = "JSON"
 
 
-Vue.use(VueAuth,
-    {
-        auth: AuthBearer,
-        http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
-        router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
-        loginData: { url: '/auth', method: 'POST', redirect: '/', fetchUser: true },
-        fetchData: { url: '/user', method: 'GET', enabled: true },
-        logoutData: { url: '/logout' },
-        refreshData: { url: 'refresh', method: 'POST', enabled: true },
-        rolesVar: 'roles',
-    }
-)
+Vue.use(VueAuth, {
+    auth: AuthBearer,
+    http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
+    router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
+    loginData: { url: '/auth', method: 'POST', redirect: '/', fetchUser: true },
+    fetchData: { url: '/user', method: 'GET', enabled: true },
+    logoutData: { url: '/logout' },
+    refreshData: { url: 'refresh', method: 'POST', enabled: true },
+    rolesVar: 'roles',
+})
+
 
 new Vue({
-    store,
+    store: store,
     el: '#app',
     router: routes,
     template: '<App/>',

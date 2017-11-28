@@ -10,7 +10,6 @@
             <p>Novareto GmbH</p>
             <p>Karonlinenstr. 17</p>
             <p>90763 Fürth</p>
-	    
             <p>0911/7807252</p>
             <p>info@novareto.de</p>
           </div>

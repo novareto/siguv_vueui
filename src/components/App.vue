@@ -107,7 +107,8 @@ export default {
 		success() {
 		    console.log("success " + this.context);
 		    this.$router.push({ name: "login" });
-		    this.$store.commit('set_message', 'You are logged out !');
+		    this.$store.commit(
+			'flash_message/add', 'You are logged out !');
 		},
 		error() {
 		    console.log("error " + this.context);
